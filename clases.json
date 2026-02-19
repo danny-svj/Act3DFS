@@ -1,0 +1,452 @@
+[
+  {
+    "id": 1,
+    "tipo": "spinning",
+    "nombre": "Spinning Power",
+    "instructor": "Carlos Mendez",
+    "dia": "lunes",
+    "horario": "07:00",
+    "duracion": 45,
+    "sala": "Sala Spinning",
+    "filas": 4,
+    "columnas": 5,
+    "reservas": [
+      {
+        "asiento": 3,
+        "usuario": "demo@mail.com",
+        "nombre": "Demo User"
+      },
+      {
+        "asiento": 8,
+        "usuario": "ana@mail.com",
+        "nombre": "Ana Torres"
+      },
+      {
+        "asiento": 12,
+        "usuario": "pedro@mail.com",
+        "nombre": "Pedro Ruiz"
+      },
+      {
+        "asiento": 7,
+        "usuario": "sofia@outlook.com",
+        "nombre": "Sofia",
+        "fecha": "2026-02-19T04:23:00.493Z"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "tipo": "yoga",
+    "nombre": "Yoga Flow",
+    "instructor": "Laura Vega",
+    "dia": "lunes",
+    "horario": "09:00",
+    "duracion": 60,
+    "sala": "Sala Multiusos",
+    "filas": 3,
+    "columnas": 4,
+    "reservas": [
+      {
+        "asiento": 1,
+        "usuario": "maria@mail.com",
+        "nombre": "Maria Garcia"
+      },
+      {
+        "asiento": 5,
+        "usuario": "sofia@mail.com",
+        "nombre": "Sofia Luna"
+      },
+      {
+        "asiento": 7,
+        "usuario": "daniel@outlook.com",
+        "nombre": "daniel",
+        "fecha": "2026-02-19T04:40:52.382Z"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "tipo": "crossfit",
+    "nombre": "CrossFit WOD",
+    "instructor": "Diego Torres",
+    "dia": "lunes",
+    "horario": "11:00",
+    "duracion": 50,
+    "sala": "Zona Funcional",
+    "filas": 2,
+    "columnas": 5,
+    "reservas": [
+      {
+        "asiento": 2,
+        "usuario": "jorge@mail.com",
+        "nombre": "Jorge Diaz"
+      },
+      {
+        "asiento": 8,
+        "usuario": "daniel@outlook.com",
+        "nombre": "daniel",
+        "fecha": "2026-02-19T04:40:55.796Z"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "tipo": "zumba",
+    "nombre": "Zumba Party",
+    "instructor": "Valentina Rios",
+    "dia": "lunes",
+    "horario": "17:00",
+    "duracion": 45,
+    "sala": "Sala Multiusos",
+    "filas": 4,
+    "columnas": 5,
+    "reservas": [
+      {
+        "asiento": 8,
+        "usuario": "sofia@outlook.com",
+        "nombre": "Sofia",
+        "fecha": "2026-02-19T04:21:54.236Z"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "tipo": "boxeo",
+    "nombre": "Boxeo Cardio",
+    "instructor": "Miguel Santos",
+    "dia": "lunes",
+    "horario": "19:00",
+    "duracion": 45,
+    "sala": "Zona Funcional",
+    "filas": 2,
+    "columnas": 4,
+    "reservas": [
+      {
+        "asiento": 1,
+        "usuario": "luis@mail.com",
+        "nombre": "Luis Ramirez"
+      },
+      {
+        "asiento": 6,
+        "usuario": "karen@mail.com",
+        "nombre": "Karen Ortiz"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "tipo": "yoga",
+    "nombre": "Yoga Restaurativo",
+    "instructor": "Laura Vega",
+    "dia": "martes",
+    "horario": "08:00",
+    "duracion": 60,
+    "sala": "Sala Multiusos",
+    "filas": 3,
+    "columnas": 4,
+    "reservas": []
+  },
+  {
+    "id": 7,
+    "tipo": "spinning",
+    "nombre": "Spinning Endurance",
+    "instructor": "Carlos Mendez",
+    "dia": "martes",
+    "horario": "10:00",
+    "duracion": 50,
+    "sala": "Sala Spinning",
+    "filas": 4,
+    "columnas": 5,
+    "reservas": [
+      {
+        "asiento": 5,
+        "usuario": "demo@mail.com",
+        "nombre": "Demo User"
+      },
+      {
+        "asiento": 15,
+        "usuario": "ana@mail.com",
+        "nombre": "Ana Torres"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "tipo": "crossfit",
+    "nombre": "CrossFit Strength",
+    "instructor": "Diego Torres",
+    "dia": "martes",
+    "horario": "18:00",
+    "duracion": 50,
+    "sala": "Zona Funcional",
+    "filas": 2,
+    "columnas": 5,
+    "reservas": [
+      {
+        "asiento": 9,
+        "usuario": "sofia@outlook.com",
+        "nombre": "Sofia",
+        "fecha": "2026-02-19T04:23:08.792Z"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "tipo": "spinning",
+    "nombre": "Spinning HIIT",
+    "instructor": "Carlos Mendez",
+    "dia": "miercoles",
+    "horario": "07:00",
+    "duracion": 40,
+    "sala": "Sala Spinning",
+    "filas": 4,
+    "columnas": 5,
+    "reservas": [
+      {
+        "asiento": 1,
+        "usuario": "pedro@mail.com",
+        "nombre": "Pedro Ruiz"
+      },
+      {
+        "asiento": 10,
+        "usuario": "maria@mail.com",
+        "nombre": "Maria Garcia"
+      },
+      {
+        "asiento": 17,
+        "usuario": "jorge@mail.com",
+        "nombre": "Jorge Diaz"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "tipo": "zumba",
+    "nombre": "Zumba Fitness",
+    "instructor": "Valentina Rios",
+    "dia": "miercoles",
+    "horario": "09:00",
+    "duracion": 45,
+    "sala": "Sala Multiusos",
+    "filas": 4,
+    "columnas": 5,
+    "reservas": [
+      {
+        "asiento": 7,
+        "usuario": "sofia@mail.com",
+        "nombre": "Sofia Luna"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "tipo": "boxeo",
+    "nombre": "Boxeo Tecnico",
+    "instructor": "Miguel Santos",
+    "dia": "miercoles",
+    "horario": "17:00",
+    "duracion": 50,
+    "sala": "Zona Funcional",
+    "filas": 2,
+    "columnas": 4,
+    "reservas": []
+  },
+  {
+    "id": 12,
+    "tipo": "yoga",
+    "nombre": "Yoga Power",
+    "instructor": "Laura Vega",
+    "dia": "miercoles",
+    "horario": "19:00",
+    "duracion": 60,
+    "sala": "Sala Multiusos",
+    "filas": 3,
+    "columnas": 4,
+    "reservas": [
+      {
+        "asiento": 3,
+        "usuario": "karen@mail.com",
+        "nombre": "Karen Ortiz"
+      },
+      {
+        "asiento": 9,
+        "usuario": "luis@mail.com",
+        "nombre": "Luis Ramirez"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "tipo": "crossfit",
+    "nombre": "CrossFit Metcon",
+    "instructor": "Diego Torres",
+    "dia": "jueves",
+    "horario": "07:00",
+    "duracion": 45,
+    "sala": "Zona Funcional",
+    "filas": 2,
+    "columnas": 5,
+    "reservas": [
+      {
+        "asiento": 4,
+        "usuario": "demo@mail.com",
+        "nombre": "Demo User"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "tipo": "spinning",
+    "nombre": "Spinning Rhythm",
+    "instructor": "Carlos Mendez",
+    "dia": "jueves",
+    "horario": "11:00",
+    "duracion": 45,
+    "sala": "Sala Spinning",
+    "filas": 4,
+    "columnas": 5,
+    "reservas": []
+  },
+  {
+    "id": 15,
+    "tipo": "zumba",
+    "nombre": "Zumba Toning",
+    "instructor": "Valentina Rios",
+    "dia": "jueves",
+    "horario": "18:00",
+    "duracion": 50,
+    "sala": "Sala Multiusos",
+    "filas": 4,
+    "columnas": 5,
+    "reservas": [
+      {
+        "asiento": 2,
+        "usuario": "ana@mail.com",
+        "nombre": "Ana Torres"
+      },
+      {
+        "asiento": 11,
+        "usuario": "maria@mail.com",
+        "nombre": "Maria Garcia"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "tipo": "yoga",
+    "nombre": "Yoga Vinyasa",
+    "instructor": "Laura Vega",
+    "dia": "viernes",
+    "horario": "08:00",
+    "duracion": 60,
+    "sala": "Sala Multiusos",
+    "filas": 3,
+    "columnas": 4,
+    "reservas": []
+  },
+  {
+    "id": 17,
+    "tipo": "boxeo",
+    "nombre": "Boxeo Sparring",
+    "instructor": "Miguel Santos",
+    "dia": "viernes",
+    "horario": "10:00",
+    "duracion": 45,
+    "sala": "Zona Funcional",
+    "filas": 2,
+    "columnas": 4,
+    "reservas": [
+      {
+        "asiento": 3,
+        "usuario": "jorge@mail.com",
+        "nombre": "Jorge Diaz"
+      },
+      {
+        "asiento": 7,
+        "usuario": "pedro@mail.com",
+        "nombre": "Pedro Ruiz"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "tipo": "spinning",
+    "nombre": "Spinning Friday",
+    "instructor": "Carlos Mendez",
+    "dia": "viernes",
+    "horario": "17:00",
+    "duracion": 50,
+    "sala": "Sala Spinning",
+    "filas": 4,
+    "columnas": 5,
+    "reservas": [
+      {
+        "asiento": 8,
+        "usuario": "daniel@outlook.com",
+        "nombre": "daniel",
+        "fecha": "2026-02-19T04:41:43.115Z"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "tipo": "crossfit",
+    "nombre": "CrossFit Hero",
+    "instructor": "Diego Torres",
+    "dia": "viernes",
+    "horario": "19:00",
+    "duracion": 55,
+    "sala": "Zona Funcional",
+    "filas": 2,
+    "columnas": 5,
+    "reservas": [
+      {
+        "asiento": 1,
+        "usuario": "luis@mail.com",
+        "nombre": "Luis Ramirez"
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "tipo": "zumba",
+    "nombre": "Zumba Mega Mix",
+    "instructor": "Valentina Rios",
+    "dia": "sabado",
+    "horario": "10:00",
+    "duracion": 60,
+    "sala": "Sala Multiusos",
+    "filas": 4,
+    "columnas": 5,
+    "reservas": [
+      {
+        "asiento": 4,
+        "usuario": "sofia@mail.com",
+        "nombre": "Sofia Luna"
+      },
+      {
+        "asiento": 13,
+        "usuario": "karen@mail.com",
+        "nombre": "Karen Ortiz"
+      },
+      {
+        "asiento": 18,
+        "usuario": "demo@mail.com",
+        "nombre": "Demo User"
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "tipo": "yoga",
+    "nombre": "Yoga Meditacion",
+    "instructor": "Laura Vega",
+    "dia": "sabado",
+    "horario": "12:00",
+    "duracion": 75,
+    "sala": "Sala Multiusos",
+    "filas": 3,
+    "columnas": 4,
+    "reservas": []
+  }
+]

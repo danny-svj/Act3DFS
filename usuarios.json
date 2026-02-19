@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "nombre": "Daniel",
+    "email": "daniel@test.com",
+    "password": "$2a$10$C2nByrFudy9V39P8/LHZwOX496pvuYkBsn7Gl6L2aLVCOH29qYGx6"
+  },
+  {
+    "id": 2,
+    "nombre": "dani",
+    "email": "dani123@outlook.com",
+    "password": "$2a$10$p10h/Evo/p2miUldQ58zJOQm1.7.sqyHRsYmknajmlR3UAiogY.Fy"
+  },
+  {
+    "id": 3,
+    "nombre": "Sofia",
+    "email": "sofia@outlook.com",
+    "password": "$2a$10$t/7tieofXUuIAUknKSYWw.7/8ZJIA0hiupOBCMeLikafEWLxniyGi"
+  },
+  {
+    "id": 4,
+    "nombre": "daniel",
+    "email": "daniel@outlook.com",
+    "password": "$2a$10$/PtJNJUt3IZYp4NIgCrNBuGuqgZeJgWMrqTmAUYk/oFwAPtijPsa6"
+  }
+]
