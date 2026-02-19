@@ -1,14 +1,12 @@
 const jwt = require('jsonwebtoken');
 
-const JWT_SECRET = 'mi_clave_secreta_para_jwt_2024'; // TODO: mover a .env
+const JWT_SECRET = 'dfG67gym$ecr3t';
 
 const verificarToken = (req, res, next) => {
     const authHeader = req.header('Authorization');
 
     if (!authHeader) {
-        return res.status(401).json({ 
-            mensaje: 'Acceso denegado, no hay token' 
-        });
+        return res.status(401).json({ mensaje: 'No hay token' });
     }
 
     try {
@@ -19,9 +17,8 @@ const verificarToken = (req, res, next) => {
         const datosUsuario = jwt.verify(token, JWT_SECRET);
         req.usuario = datosUsuario;
         next();
-    } catch (error) {
-        console.log('Token invalido:', error.message);
-        res.status(401).json({ mensaje: 'Token no valido o expirado' });
+    } catch (err) {
+        res.status(401).json({ mensaje: 'Token invalido' });
     }
 };
 

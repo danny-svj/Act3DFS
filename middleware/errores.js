@@ -1,28 +1,15 @@
-// manejo de errores global
 const manejarErrores = (err, req, res, next) => {
-    console.error('ERROR:', err.message, '-', req.method, req.originalUrl);
+    console.error(err.message);
 
     if (err.type === 'entity.parse.failed') {
-        return res.status(400).json({ 
-            mensaje: 'JSON mal formado' 
-        });
+        return res.status(400).json({ mensaje: 'JSON mal formado' });
     }
 
-    if (err.name === 'JsonWebTokenError') {
-        return res.status(401).json({ 
-            mensaje: 'Token no valido' 
-        });
+    if (err.name === 'JsonWebTokenError' || err.name === 'TokenExpiredError') {
+        return res.status(401).json({ mensaje: 'Token invalido' });
     }
 
-    if (err.name === 'TokenExpiredError') {
-        return res.status(401).json({ 
-            mensaje: 'Token expirado' 
-        });
-    }
-
-    res.status(err.statusCode || 500).json({
-        mensaje: err.message || 'Error interno del servidor'
-    });
+    res.status(500).json({ mensaje: 'Error del servidor' });
 };
 
 module.exports = manejarErrores;

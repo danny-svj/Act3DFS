@@ -19,7 +19,6 @@ async function guardarClases(clases) {
     await fs.writeFile(ARCHIVO, JSON.stringify(clases, null, 2));
 }
 
-// todas las clases (publico)
 router.get('/', async (req, res, next) => {
     try {
         const clases = await leerClases();
@@ -29,7 +28,6 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-// una clase por id (publico)
 router.get('/:id', async (req, res, next) => {
     try {
         const clases = await leerClases();
@@ -41,7 +39,7 @@ router.get('/:id', async (req, res, next) => {
     }
 });
 
-// reservar asiento (necesita login)
+// reservar
 router.post('/:id/reservar', verificarToken, async (req, res, next) => {
     try {
         const { asiento } = req.body;
@@ -57,17 +55,16 @@ router.post('/:id/reservar', verificarToken, async (req, res, next) => {
         const totalAsientos = clase.filas * clase.columnas;
 
         if (asiento < 1 || asiento > totalAsientos) {
-            return res.status(400).json({ mensaje: 'Numero de asiento invalido' });
+            return res.status(400).json({ mensaje: 'Asiento invalido' });
         }
 
-        // checar si ya esta ocupado
         if (clase.reservas.find(r => r.asiento === asiento)) {
-            return res.status(400).json({ mensaje: 'Ese lugar ya esta reservado' });
+            return res.status(400).json({ mensaje: 'Lugar ocupado' });
         }
 
-        // checar si ya tiene reserva en esta clase
+        // que no repita reserva
         if (clase.reservas.find(r => r.usuario === req.usuario.email)) {
-            return res.status(400).json({ mensaje: 'Ya tienes un lugar en esta clase' });
+            return res.status(400).json({ mensaje: 'Ya tienes lugar aqui' });
         }
 
         clase.reservas.push({
@@ -78,14 +75,12 @@ router.post('/:id/reservar', verificarToken, async (req, res, next) => {
         });
 
         await guardarClases(clases);
-        console.log('Reserva:', req.usuario.email, 'asiento', asiento, '-', clase.nombre);
-        res.json({ mensaje: 'Lugar reservado', clase });
+        res.json({ mensaje: 'Reservado', clase });
     } catch (error) {
         next(error);
     }
 });
 
-// cancelar reserva (necesita login)
 router.delete('/:id/cancelar', verificarToken, async (req, res, next) => {
     try {
         const clases = await leerClases();
@@ -95,7 +90,7 @@ router.delete('/:id/cancelar', verificarToken, async (req, res, next) => {
         const clase = clases[indice];
         const idx = clase.reservas.findIndex(r => r.usuario === req.usuario.email);
         if (idx === -1) {
-            return res.status(400).json({ mensaje: 'No tienes reserva en esta clase' });
+            return res.status(400).json({ mensaje: 'No tienes reserva aqui' });
         }
 
         clase.reservas.splice(idx, 1);

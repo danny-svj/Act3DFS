@@ -14,7 +14,6 @@ async function leerMaquinas() {
     }
 }
 
-// todas las maquinas (publico, sin token)
 router.get('/', async (req, res, next) => {
     try {
         const maquinas = await leerMaquinas();

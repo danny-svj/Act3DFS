@@ -46,8 +46,6 @@ class GymApp {
         }
     }
 
-    // --- auth ---
-
     irALogin() {
         document.getElementById('auth-screen').style.display = 'flex';
         document.getElementById('app-principal').style.display = 'none';
@@ -72,10 +70,7 @@ class GymApp {
         const email = document.getElementById('login-email').value.trim();
         const password = document.getElementById('login-password').value;
 
-        if (!email || !password) {
-            this.alerta('Llena todos los campos', 'error');
-            return;
-        }
+        if (!email || !password) return this.alerta('Llena los campos', 'error');
 
         try {
             const resp = await fetch(this.API + '/auth/login', {
@@ -84,21 +79,18 @@ class GymApp {
                 body: JSON.stringify({ email, password })
             });
             const data = await resp.json();
+            if (!resp.ok) return this.alerta(data.mensaje || 'Error', 'error');
 
-            if (resp.ok) {
-                this.token = data.token;
-                this.usuario = data.usuario;
-                localStorage.setItem('token', this.token);
-                localStorage.setItem('usuario', JSON.stringify(this.usuario));
-                this.alerta('Bienvenido ' + data.usuario.nombre, 'exito');
-                setTimeout(() => {
-                    this.volverPublico();
-                    this.actualizarSidebar();
-                    this.cargarDatos();
-                }, 800);
-            } else {
-                this.alerta(data.mensaje || 'Error al entrar', 'error');
-            }
+            this.token = data.token;
+            this.usuario = data.usuario;
+            localStorage.setItem('token', this.token);
+            localStorage.setItem('usuario', JSON.stringify(this.usuario));
+            this.alerta('Bienvenido ' + data.usuario.nombre, 'exito');
+            setTimeout(() => {
+                this.volverPublico();
+                this.actualizarSidebar();
+                this.cargarDatos();
+            }, 800);
         } catch (e) {
             this.alerta('Error de conexion', 'error');
         }
@@ -109,10 +101,7 @@ class GymApp {
         const email = document.getElementById('reg-email').value.trim();
         const password = document.getElementById('reg-password').value;
 
-        if (!nombre || !email || !password) {
-            this.alerta('Llena todos los campos', 'error');
-            return;
-        }
+        if (!nombre || !email || !password) return this.alerta('Faltan campos', 'error');
 
         try {
             const resp = await fetch(this.API + '/auth/register', {
@@ -137,17 +126,15 @@ class GymApp {
     }
 
     logout() {
-        if (!confirm('¿Cerrar sesion?')) return;
+        if (!confirm('Cerrar sesion?')) return;
         this.token = null;
         this.usuario = null;
         localStorage.removeItem('token');
         localStorage.removeItem('usuario');
         this.actualizarSidebar();
         this.renderInicio();
-        this.alerta('Sesion cerrada', 'exito');
+        this.alerta('Listo', 'exito');
     }
-
-    // --- navegacion ---
 
     irA(seccion) {
         this.seccionActual = seccion;
@@ -177,8 +164,6 @@ class GymApp {
         document.getElementById('sidebar').classList.toggle('abierto');
     }
 
-    // --- datos ---
-
     async cargarClases() {
         try {
             const resp = await fetch(this.API + '/clases');
@@ -196,8 +181,6 @@ class GymApp {
             console.log('Error maquinas:', e);
         }
     }
-
-    // --- inicio ---
 
     renderInicio() {
         const diaHoy = this.getDiaHoy();
@@ -253,8 +236,6 @@ class GymApp {
             avCont.innerHTML = html;
         }
     }
-
-    // --- clases ---
 
     renderClases() {
         const cont = document.getElementById('clases-grid');
@@ -319,8 +300,6 @@ class GymApp {
         this.renderClases();
     }
 
-    // --- maquinas ---
-
     renderMaquinas() {
         const cont = document.getElementById('maquinas-grid');
         let filtradas = this.maquinas;
@@ -361,8 +340,6 @@ class GymApp {
         });
         this.renderMaquinas();
     }
-
-    // --- asientos (modal) ---
 
     abrirAsientos(id) {
         const clase = this.clases.find(c => c.id === id);
@@ -438,10 +415,7 @@ class GymApp {
         const reserva = this.claseSeleccionada.reservas.find(r => r.asiento === num);
         if (reserva) return;
 
-        if (!this.token) {
-            this.alerta('Inicia sesion para reservar un lugar', 'error');
-            return;
-        }
+        if (!this.token) return this.alerta('Inicia sesion primero', 'error');
 
         // quitar seleccion previa
         document.querySelectorAll('.asiento.seleccionado').forEach(el => {
@@ -461,10 +435,7 @@ class GymApp {
     }
 
     async confirmarReserva() {
-        if (!this.token) {
-            this.alerta('Necesitas iniciar sesion', 'error');
-            return;
-        }
+        if (!this.token) return this.alerta('Inicia sesion', 'error');
         if (!this.asientoSeleccionado || !this.claseSeleccionada) return;
 
         try {
@@ -482,16 +453,16 @@ class GymApp {
 
             const data = await resp.json();
             if (resp.ok) {
-                this.alerta('Lugar reservado!', 'exito');
+                this.alerta('Reservado!', 'exito');
                 await this.cargarClases();
                 this.claseSeleccionada = this.clases.find(c => c.id === this.claseSeleccionada.id);
                 this.renderAsientos(this.claseSeleccionada);
                 this.asientoSeleccionado = null;
             } else {
-                this.alerta(data.mensaje || 'Error al reservar', 'error');
+                this.alerta(data.mensaje || 'No se pudo reservar', 'error');
             }
         } catch (e) {
-            this.alerta('Error de conexion', 'error');
+            this.alerta('Sin conexion', 'error');
         }
     }
 
@@ -505,13 +476,13 @@ class GymApp {
             });
 
             if (resp.ok) {
-                this.alerta('Reserva cancelada', 'exito');
+                this.alerta('Cancelado', 'exito');
                 await this.cargarClases();
                 this.claseSeleccionada = this.clases.find(c => c.id === this.claseSeleccionada.id);
                 this.renderAsientos(this.claseSeleccionada);
             }
         } catch (e) {
-            this.alerta('Error al cancelar', 'error');
+            this.alerta('Error', 'error');
         }
     }
 
@@ -520,8 +491,6 @@ class GymApp {
         this.claseSeleccionada = null;
         this.asientoSeleccionado = null;
     }
-
-    // --- mapa info ---
 
     infoZona(zona) {
         const panel = document.getElementById('zona-info');
@@ -566,16 +535,14 @@ class GymApp {
         panel.style.display = 'block';
     }
 
-    // --- perfil ---
-
     renderPerfil() {
         const cont = document.getElementById('perfil-content');
         if (!this.token) {
             cont.innerHTML = `
                 <div class="perfil-nologin">
                     <span class="material-icons-outlined" style="font-size:72px; color:#555;">lock</span>
-                    <h3>Inicia sesion para ver tu perfil</h3>
-                    <p>Podras ver tus reservas y datos de cuenta</p>
+                    <h3>Inicia sesion</h3>
+                    <p>Para ver tus reservas y datos</p>
                     <button class="btn-auth" onclick="App.irALogin()">
                         <span class="material-icons-outlined">login</span> Iniciar Sesion
                     </button>
@@ -626,8 +593,6 @@ class GymApp {
         await this.cancelarReserva();
         this.renderPerfil();
     }
-
-    // --- utils ---
 
     tipoInfo(tipo) {
         const tipos = {

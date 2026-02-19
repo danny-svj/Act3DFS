@@ -6,14 +6,13 @@ const fs = require('fs').promises;
 const path = require('path');
 
 const ARCHIVO_USUARIOS = path.join(__dirname, '..', 'usuarios.json');
-const JWT_SECRET = 'mi_clave_secreta_para_jwt_2024'; // TODO: poner en .env
+const JWT_SECRET = 'dfG67gym$ecr3t';
 
 async function leerUsuarios() {
     try {
         const datos = await fs.readFile(ARCHIVO_USUARIOS, 'utf8');
         return JSON.parse(datos);
-    } catch (error) {
-        console.log('Error leyendo usuarios:', error.message);
+    } catch (err) {
         return [];
     }
 }
@@ -28,32 +27,26 @@ router.post('/register', async (req, res, next) => {
         const { nombre, email, password } = req.body;
 
         if (!nombre || !email || !password) {
-            return res.status(400).json({ 
-                mensaje: 'Todos los campos son obligatorios' 
-            });
+            return res.status(400).json({ mensaje: 'Faltan campos' });
         }
 
         if (password.length < 6) {
-            return res.status(400).json({ 
-                mensaje: 'La contraseña debe tener al menos 6 caracteres' 
-            });
+            return res.status(400).json({ mensaje: 'Contraseña muy corta (min 6)' });
         }
 
         const usuarios = await leerUsuarios();
 
-        const yaExiste = usuarios.find(u => u.email === email);
-        if (yaExiste) {
-            return res.status(400).json({ mensaje: 'Ya hay una cuenta con ese correo' });
+        if (usuarios.find(u => u.email === email)) {
+            return res.status(400).json({ mensaje: 'Ese correo ya esta registrado' });
         }
 
-        const salt = await bcrypt.genSalt(10);
-        const passwordEncriptado = await bcrypt.hash(password, salt);
+        const hash = await bcrypt.hash(password, 10);
 
         const nuevoUsuario = {
             id: usuarios.length > 0 ? Math.max(...usuarios.map(u => u.id)) + 1 : 1,
             nombre,
             email,
-            password: passwordEncriptado
+            password: hash
         };
 
         usuarios.push(nuevoUsuario);
@@ -65,10 +58,8 @@ router.post('/register', async (req, res, next) => {
             { expiresIn: '24h' }
         );
 
-        console.log('Nuevo usuario:', email);
-
         res.status(201).json({
-            mensaje: 'Usuario registrado exitosamente',
+            mensaje: 'Cuenta creada',
             token,
             usuario: {
                 id: nuevoUsuario.id,
